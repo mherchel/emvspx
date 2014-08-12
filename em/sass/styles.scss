@@ -1,0 +1,76 @@
+@import "compass";
+@import "breakpoint";
+@import "breakpoints";
+* {
+  @include box-sizing(border-box);
+}
+%container {
+  padding: 20px;
+  font-family: helvetica, arial, sans-serif;
+  color: #666;
+  min-height: 100px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+header {
+  background: lightblue;
+  @extend %container;
+}
+nav {
+  background: #eee;
+  position: relative;
+  @extend %container;
+  &:after {
+    content: "Menu";
+    position: absolute;
+    line-height: 40px;
+    right: 10px;
+    top: 2px;
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid #666;
+    @include breakpoint($breakpoint-a) {
+      display: none;
+    }
+  }  
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  a {
+    color: black;
+    padding: 10px 20px;
+    display: block;
+    background: #bbb;
+    text-decoration: none;
+  }
+  li {
+    display: none;
+    @include breakpoint($breakpoint-a) {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+  }
+}
+section {
+  background: lightgray;
+  overflow: hidden;
+  @extend %container;
+  div {
+    width: 33.3%;
+    background: #bbb;
+    padding: 10px;
+    float: left;
+    &:nth-child(2) {
+      background: #ccc;
+    }
+  }
+}
+footer {
+  background: lightyellow;
+  @extend %container;
+}
